@@ -8,10 +8,10 @@ KEYWORDS = ["Names", "Equations", "Inequalities"]
 def parse_expression(expression, basis, separator):
 
     coefficients = []
-    coefficients.append(re.findall(f"(?<={separator})[-+\d\s]*", expression)[0])
+    coefficients.append(re.findall(rf"(?<={separator})[-+\d\s]*", expression)[0])
     for x in basis:
         try:
-            coefficients.append(re.findall(f"^(?={x})|[-+][\d\s]*?(?={x})", expression)[0])
+            coefficients.append(re.findall(rf"^(?={x})|[-+][\d\s]*?(?={x})", expression)[0])
         except IndexError: # If term isn't in expression.
             coefficients.append("0")
 
